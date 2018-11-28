@@ -2,6 +2,10 @@
 
 I created this project to practice working with Vue.js. It is a task list where you can add/close/remove tasks, and set priorities/sort those tasks.
 
+## Preview
+
+![Task List](screenshot.png?raw=true "Task List")
+
 ## How to Use It
 
 Open the file `index.html`. You can start adding new tasks by clicking the 'Add Task' button. A priority indicator, an input box, and a 'Mark As Done' button will appear. A default priority of 5 is given to the task. You can click on the number to increase the importance of the task.
