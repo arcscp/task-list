@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Task List</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+	<body>
+		<div id="task-container">
+			<h1>Task List</h1>
+			<p>Add new tasks by using the 'Add Task' button below. A default priority of 5 is given, but clicking on the number will increase it. 
+				<br />You can sort the existing tasks (starting from '1', ending at '5') by clicking 'Sort By Priority'.
+				<br />You can mark a task as done by clicking 'Mark As Done', and then you have the option to re-open it or to remove it from the list.</p>
+			<button @click="addTask">Add Task</button>
+			<button @click="sortTasks">Sort By Priority</button>
+			<br /><br />
+			<div v-for="task in tasks">
+				<div class='task-container'>
+					<span :class="getPriorityClass(task)" @click="nextPriority(task)" v-if="task.removed === false">{{task.priority}}</span>
+					<input class="task-item" type="text" :disabled="!task.open" v-model="task.summary" v-if="task.removed === false">
+					<button class="task-button" @click="toggleTask(task)" v-if="task.open === true">Mark As Done</button>
+					<button class="task-button" @click="toggleTask(task)" v-if="task.open === false && task.removed === false">Re-open</button>
+					<button class="task-button" @click="removeTask(task)" v-if="task.open === false && task.removed === false">Remove</button>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="index.js"></script>
+	</body>
+</html>
